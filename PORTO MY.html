@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamir Muhammad Yasir — PPIC & SCM Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f7fc;
+      font-family: 'Inter', sans-serif;
+      color: #1a1e2b;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      padding: 2rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #eef2f8;
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .name {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e2b3c, #2b4f6e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .badge {
+      background: #eef2ff;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1e4b6e;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .intro {
+      font-size: 1rem;
+      color: #2c3e4e;
+      margin-top: 0.5rem;
+      border-left: 3px solid #2b6a9f;
+      padding-left: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .skills-grid, .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-tag {
+      background: #f0f4f9;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1e3a4d;
+    }
+
+    .lang-item {
+      background: white;
+      border: 1px solid #dce5ef;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      flex: 1;
+      min-width: 240px;
+      background: #fafcff;
+      border: 1px solid #e2edf7;
+      border-radius: 20px;
+      padding: 1.2rem 1.2rem;
+      transition: all 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: #2b6a9f;
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    .project-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: #4a5b6e;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #2b6a9f;
+      font-size: 0.8rem;
+      border-bottom: 1px solid transparent;
+      transition: 0.2s;
+    }
+
+    .project-link:hover {
+      border-bottom-color: #2b6a9f;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #f8fafd;
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      border: 1px solid #e2eaf1;
+      font-size: 0.9rem;
+    }
+
+    .contact-item a {
+      text-decoration: none;
+      color: #1e4663;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      color: #0f2c40;
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6c7f8f;
+      margin-top: 2rem;
+      border-top: 1px solid #e2edf7;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 680px) {
+      body { padding: 1rem; }
+      .card { padding: 1.5rem; }
+      .name { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- PROFIL UTAMA -->
+  <div class="card">
+    <div class="header">
+      <span class="name">Tamir Muhammad Yasir</span>
+      <span class="badge">PPIC · SCM · Data Systems</span>
+    </div>
+    <div class="intro">
+      Results-driven Industrial Engineering graduate (GPA 3.65) with experience in production planning, quality control, and operations management across manufacturing and F&B. 
+      Currently PPIC Staff at PT Herba Emas Wahidatama — handling production monitoring, Manufacturing Orders, Batch Records, forecast analysis, and SOP creation. 
+      Also building integrated PPIC systems: demand forecasting (ANN) + real-time inventory dashboard.
+    </div>
+  </div>
+
+  <!-- RINGKASAN PROFIL + SKILLS + BAHASA -->
+  <div class="card">
+    <div class="section-title">
+      📋 Ringkasan Profil
+    </div>
+    <p style="margin-bottom: 1.25rem; color: #2c3e4e;">
+      Lulusan Teknik Industri Telkom University Purwokerto dengan pengalaman luas di PPIC, operational excellence, dan pengembangan SOP. 
+      Berpengalaman di PT Herba Emas Wahidatama (PPIC Staff), PT Aksara Investama (Operational Staff), serta wirausaha manajemen inventaris. 
+      Terbiasa bekerja dengan target produksi, analisis data, dan sistem supply chain. Saat ini mengembangkan sistem forecasting berbasis ANN serta dashboard inventory control yang terintegrasi.
+    </p>
+
+    <div class="section-title" style="margin-top: 1rem;">
+      🛠️ Kompetensi & Skills
+    </div>
+    <div class="skills-grid">
+      <span class="skill-tag">Production Planning & PPIC</span>
+      <span class="skill-tag">Inventory Control (EOQ/ROP)</span>
+      <span class="skill-tag">Demand Forecasting (ANN)</span>
+      <span class="skill-tag">Microsoft Office / Data Analysis</span>
+      <span class="skill-tag">Operational Excellence & SOP</span>
+      <span class="skill-tag">Lean Manufacturing & Six Sigma</span>
+      <span class="skill-tag">Python / Streamlit (Basic)</span>
+      <span class="skill-tag">Time Management</span>
+      <span class="skill-tag">Data Entry</span>
+    </div>
+
+    <div class="section-title" style="margin-top: 1rem;">
+      🌐 Bahasa
+    </div>
+    <div class="skills-grid">
+      <span class="lang-item">🇮🇩 Indonesian — Native</span>
+      <span class="lang-item">🇬🇧 English — Intermediate (TOEFL 507)</span>
+    </div>
+  </div>
+
+  <!-- PROYEK / APLIKASI -->
+  <div class="card">
+    <div class="section-title">
+      📌 Sistem PPIC & Inventory (Live Project)
+    </div>
+    <div class="project-row">
+      <div class="project-card">
+        <div class="project-title">📈 PPIC Forecasting System</div>
+        <div class="project-desc">
+          Demand forecasting berbasis ANN (MAPE 9.01%). Training real-time, PostgreSQL cloud, multi-layer perceptron (1-8-4-1).
+        </div>
+        <a href="https://ppic-scm.streamlit.app/" target="_blank" class="project-link">
+          🔗 Buka Aplikasi →
+        </a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">📦 Inventory Control Dashboard</div>
+        <div class="project-desc">
+          Manajemen stok + EOQ/ROP otomatis, klasifikasi ABC, alert stok kritis, sinkronisasi forecast, dan transaksi IN/OUT.
+        </div>
+        <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="project-link">
+          🔗 Buka Aplikasi →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONTAK / SOSIAL + WA + EMAIL (ISI SENDIRI) -->
+  <div class="card">
+    <div class="section-title">
+      📬 Hubungi Saya
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span>💼</span>
+        <a href="#" id="linkedin-link" target="_blank">LinkedIn (isi sendiri)</a>
+      </div>
+      <div class="contact-item">
+        <span>📧</span>
+        <a href="#" id="email-link">email@contoh.com</a>
+      </div>
+      <div class="contact-item">
+        <span>📞</span>
+        <a href="#" id="wa-link">+62 812-3456-7890</a>
+      </div>
+    </div>
+    <p style="font-size: 0.8rem; color: #5e727f; margin-top: 1rem; background: #f0f5fa; padding: 0.6rem; border-radius: 14px;">
+      ⚠️ <strong>Ganti data kontak:</strong> Edit file HTML cari bagian <code style="background:#eef2f5; padding:2px 6px;">id="linkedin-link", "email-link", "wa-link"</code> dan ganti URL / teks sesuai milik Anda.
+    </p>
+  </div>
+
+  <div class="footer-note">
+    Tamir Muhammad Yasir — PPIC & Supply Chain Data Systems • Hosting via GitHub Pages (gratis)
+  </div>
+</div>
+
+<script>
+  (function updateContact() {
+    // ================ ✏️ EDIT DI SINI =================
+    // GANTI dengan data kamu (LinkedIn, Email, WhatsApp)
+    const linkedinUrl = "https://www.linkedin.com/in/tamir-muhammad-yasir/";  // ganti link asli
+    const emailAddress = "tamir.yasir@email.com";                           // ganti email asli
+    const whatsappNumber = "6281234567890";                                 // tanpa +62, hanya angka
+    const whatsappText = "Halo Tamir, saya tertarik dengan portofolio PPIC Anda";
+    // =================================================
+
+    const linkedinElem = document.getElementById("linkedin-link");
+    const emailElem = document.getElementById("email-link");
+    const waElem = document.getElementById("wa-link");
+
+    if (linkedinElem && linkedinUrl !== "#") {
+      linkedinElem.href = linkedinUrl;
+      let shortName = linkedinUrl.replace("https://", "").replace("www.", "").split("/")[0];
+      linkedinElem.innerText = shortName || "LinkedIn";
+    }
+    if (emailElem && emailAddress !== "email@contoh.com") {
+      emailElem.href = `mailto:${emailAddress}`;
+      emailElem.innerText = emailAddress;
+    }
+    if (waElem && whatsappNumber !== "6281234567890") {
+      let waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+      waElem.href = waLink;
+      let displayNumber = whatsappNumber.replace(/^62/, "0");
+      waElem.innerText = displayNumber;
+    }
+  })();
+</script>
+</body>
+</html>
