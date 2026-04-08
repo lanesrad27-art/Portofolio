@@ -1,794 +1,886 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tamir Yasir — PPIC & SCM Data Systems</title>
+<title>Tamir Muhammad Yasir — PPIC & Data Systems Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #18181f;
-    --border: #222230;
-    --accent: #ff3b5c;
-    --accent2: #00e5c8;
-    --accent3: #ffb800;
-    --text: #e8e8f0;
-    --text-muted: #6b6b80;
-    --text-dim: #9999b0;
-    --mono: 'Space Mono', monospace;
-    --sans: 'Syne', sans-serif;
+    --bg:       #09090f;
+    --surface:  #111118;
+    --surface2: #17171f;
+    --border:   #1e1e2e;
+    --border2:  #2a2a3e;
+    --red:      #e63950;
+    --teal:     #00c8a8;
+    --gold:     #f5a623;
+    --purple:   #8b7cf8;
+    --text:     #e2e2ee;
+    --muted:    #6a6a88;
+    --dim:      #9898b8;
+    --mono:     'Space Mono', monospace;
+    --sans:     'Syne', sans-serif;
+    --body:     'Inter', sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--sans);
+    font-family: var(--body);
     line-height: 1.6;
     overflow-x: hidden;
   }
 
-  body::before {
+  /* ── GRAIN ── */
+  body::after {
     content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999;
   }
 
+  /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(10,10,15,0.85);
-    backdrop-filter: blur(20px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(9,9,15,0.90);
+    backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
   }
 
-  .nav-logo {
+  .nav-id {
+    display: flex; flex-direction: column;
+  }
+  .nav-name {
+    font-family: var(--sans);
+    font-size: 0.95rem; font-weight: 800;
+    letter-spacing: -0.01em; color: var(--text);
+  }
+  .nav-role {
     font-family: var(--mono);
-    font-size: 0.85rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.6rem; color: var(--red);
+    letter-spacing: 0.15em; text-transform: uppercase;
   }
 
   .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
+    display: flex; gap: 1.75rem; list-style: none;
   }
-
   .nav-links a {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-family: var(--mono); font-size: 0.68rem;
+    color: var(--muted); text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase;
     transition: color 0.2s;
   }
+  .nav-links a:hover { color: var(--teal); }
 
-  .nav-links a:hover { color: var(--accent2); }
+  .nav-status {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.65rem;
+    color: var(--teal); letter-spacing: 0.1em;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 6px var(--teal);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
+  /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 8rem 3rem 4rem;
-    gap: 4rem;
-    position: relative;
-    overflow: hidden;
+    padding: 8rem 2.5rem 4rem;
+    gap: 3rem;
+    position: relative; overflow: hidden;
   }
 
+  .hero::before {
+    content: '';
+    position: absolute; top: 20%; left: -5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(230,57,80,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
   .hero::after {
     content: '';
-    position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(255,59,92,0.08) 0%, transparent 70%);
+    position: absolute; bottom: 10%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,200,168,0.05) 0%, transparent 70%);
     pointer-events: none;
   }
 
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-family: var(--mono); font-size: 0.68rem;
+    color: var(--red); letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    opacity: 0; animation: fadeUp 0.6s 0.1s ease forwards;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 2rem; height: 1px; background: var(--red);
   }
 
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 1px;
-    background: var(--accent);
+  .hero-name {
+    font-family: var(--sans); font-weight: 800;
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    line-height: 1.05; letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+    opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards;
   }
-
-  h1 {
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  h1 span {
+  .hero-name .outline {
     color: transparent;
-    -webkit-text-stroke: 1px var(--accent);
+    -webkit-text-stroke: 1.5px var(--red);
+  }
+
+  .hero-title {
+    font-family: var(--mono); font-size: 0.82rem;
+    color: var(--teal); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.6s 0.3s ease forwards;
   }
 
   .hero-desc {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
+    font-size: 1rem; color: var(--dim); line-height: 1.85;
+    max-width: 460px; margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards;
   }
 
   .hero-cta {
-    display: flex;
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.6s 0.5s ease forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { opacity: 0.85; }
+  .btn-ghost { border: 1px solid var(--border2); color: var(--dim); }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ── HERO RIGHT: STATS GRID ── */
+  .hero-right {
+    display: grid; grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    padding: 0.85rem 2rem;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-    transition: opacity 0.2s;
-  }
-
-  .btn-primary:hover { opacity: 0.85; }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--text-dim);
-    padding: 0.85rem 2rem;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
   }
 
   .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 1.75rem;
-    position: relative;
-    overflow: hidden;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .stat-card:nth-child(2) { animation-delay: 0.1s; }
-  .stat-card:nth-child(3) { animation-delay: 0.2s; }
-  .stat-card:nth-child(4) { animation-delay: 0.3s; }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-  }
-
-  .stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--accent2), transparent); }
-  .stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--accent3), transparent); }
-  .stat-card:nth-child(4)::before { background: linear-gradient(90deg, #a78bfa, transparent); }
-
-  .stat-num {
-    font-family: var(--mono);
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--text);
-    display: block;
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .stat-label {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  section {
-    padding: 6rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
-  }
-
-  .section-num {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    white-space: nowrap;
-  }
-
-  h2 {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .projects-grid {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    overflow: hidden;
-    position: relative;
+    padding: 1.5rem;
+    position: relative; overflow: hidden;
     transition: border-color 0.3s;
   }
+  .stat-card:hover { border-color: var(--border2); }
+  .stat-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .stat-card.c-red::before   { background: var(--red); }
+  .stat-card.c-teal::before  { background: var(--teal); }
+  .stat-card.c-gold::before  { background: var(--gold); }
+  .stat-card.c-purple::before { background: var(--purple); }
 
-  .project-card:hover { border-color: var(--accent); }
-
-  .project-visual {
-    background: var(--surface2);
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    border-right: 1px solid var(--border);
-    position: relative;
+  .stat-num {
+    font-family: var(--mono); font-size: 2rem;
+    font-weight: 700; display: block;
+    margin-bottom: 0.3rem; line-height: 1;
+  }
+  .stat-card.c-red .stat-num   { color: var(--red); }
+  .stat-card.c-teal .stat-num  { color: var(--teal); }
+  .stat-card.c-gold .stat-num  { color: var(--gold); }
+  .stat-card.c-purple .stat-num { color: var(--purple); }
+  .stat-lbl {
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
   }
 
-  .project-badge {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid;
+  /* ── SECTION LAYOUT ── */
+  .section-wrap {
+    max-width: 1160px; margin: 0 auto;
+    padding: 5.5rem 2.5rem;
   }
 
-  .badge-live { color: var(--accent2); border-color: var(--accent2); }
-
-  .project-content {
-    padding: 2rem 2.5rem;
+  .section-head {
+    display: flex; align-items: baseline;
+    gap: 1.25rem; margin-bottom: 3.5rem;
   }
-
-  .project-type {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--accent);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
+  .sec-num {
+    font-family: var(--mono); font-size: 0.68rem;
+    color: var(--red); letter-spacing: 0.15em; white-space: nowrap;
   }
-
-  .project-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
+  h2 {
+    font-family: var(--sans); font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 800; letter-spacing: -0.02em;
   }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
 
-  .project-desc {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-  }
+  .hr { border: none; border-top: 1px solid var(--border); }
 
-  .feature-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
+  /* ── PROJECTS ── */
+  .projects { display: grid; gap: 1.5rem; }
 
-  .feature-tag {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--text-dim);
-    background: var(--surface2);
+  .proj-card {
+    background: var(--surface);
     border: 1px solid var(--border);
-    padding: 0.3rem 0.75rem;
-    letter-spacing: 0.08em;
+    display: grid; grid-template-columns: 240px 1fr;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .proj-card:hover { border-color: var(--red); transform: translateY(-2px); }
+
+  .proj-sidebar {
+    background: var(--surface2);
+    border-right: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
   }
 
-  .project-metrics {
-    display: flex;
-    gap: 2rem;
+  .proj-icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+  .proj-type {
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--muted); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .proj-sid-title {
+    font-family: var(--sans); font-size: 1.05rem;
+    font-weight: 700; margin-bottom: 1rem; line-height: 1.3;
+  }
+  .proj-url {
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--teal); text-decoration: none;
+    letter-spacing: 0.05em; word-break: break-all;
+    transition: opacity 0.2s;
+  }
+  .proj-url:hover { opacity: 0.7; }
+
+  .proj-live {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--mono); font-size: 0.6rem;
+    color: var(--teal); letter-spacing: 0.12em;
+    border: 1px solid rgba(0,200,168,0.3);
+    padding: 0.25rem 0.6rem; margin-top: 1rem;
+  }
+  .proj-live-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--teal); animation: pulse 2s infinite;
+  }
+
+  .proj-body { padding: 2rem 2.5rem; }
+
+  .proj-desc {
+    color: var(--dim); font-size: 0.93rem;
+    line-height: 1.8; margin-bottom: 1.5rem;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .tag {
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--dim); background: var(--surface2);
+    border: 1px solid var(--border); padding: 0.25rem 0.65rem;
+    letter-spacing: 0.06em;
+  }
+
+  .proj-metrics {
+    display: flex; gap: 2rem;
     padding-top: 1.25rem;
     border-top: 1px solid var(--border);
   }
-
-  .metric {
-    text-align: center;
+  .pm { text-align: center; }
+  .pm-val {
+    font-family: var(--mono); font-size: 1rem;
+    font-weight: 700; color: var(--teal); display: block;
+  }
+  .pm-lbl {
+    font-family: var(--mono); font-size: 0.58rem;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
   }
 
-  .metric-val {
-    font-family: var(--mono);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--accent2);
-    display: block;
+  /* ── INTEGRATION BOX ── */
+  .int-box {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 2.5rem; position: relative; overflow: hidden;
+  }
+  .int-box::before {
+    content: 'SYSTEM INTEGRATION';
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: var(--mono); font-size: 0.58rem;
+    color: var(--border2); letter-spacing: 0.25em;
   }
 
-  .metric-lbl {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  .int-flow {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin: 1.75rem 0; flex-wrap: wrap;
+  }
+  .flow-node {
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 0.9rem 1.2rem; flex: 1; min-width: 120px;
+    text-align: center; transition: border-color 0.2s;
+  }
+  .flow-node:hover { border-color: var(--red); }
+  .flow-node-icon { font-size: 1.5rem; display: block; margin-bottom: 0.4rem; }
+  .flow-node-name {
+    font-family: var(--sans); font-size: 0.82rem;
+    font-weight: 700; display: block;
+  }
+  .flow-node-sub {
+    font-family: var(--mono); font-size: 0.58rem;
+    color: var(--muted); display: block; margin-top: 0.2rem;
+  }
+  .flow-arrow {
+    font-size: 1.2rem; color: var(--red);
+    font-family: var(--mono); flex-shrink: 0;
   }
 
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 1rem;
-    transition: gap 0.2s;
+  .int-points {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    margin-top: 1.75rem;
   }
+  .int-pt {
+    padding: 1rem; border-left: 2px solid var(--red);
+    background: rgba(230,57,80,0.04);
+  }
+  .int-pt:nth-child(2) { border-color: var(--teal); background: rgba(0,200,168,0.04); }
+  .int-pt:nth-child(3) { border-color: var(--gold); background: rgba(245,166,35,0.04); }
+  .int-pt-title {
+    font-family: var(--mono); font-size: 0.66rem;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .int-pt-desc { font-size: 0.83rem; color: var(--dim); line-height: 1.65; }
 
-  .project-link:hover { gap: 0.85rem; }
-
+  /* ── SKILLS ── */
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono); font-size: 0.68rem;
+    color: var(--red); letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .skill-item { margin-bottom: 1rem; }
+  .skill-header {
+    display: flex; justify-content: space-between; margin-bottom: 0.35rem;
+  }
+  .skill-name { font-size: 0.88rem; font-weight: 500; }
+  .skill-pct {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
+  }
+  .skill-track {
+    height: 2px; background: var(--border2); position: relative;
+  }
+  .skill-fill {
+    position: absolute; top: 0; left: 0; height: 100%;
+    background: linear-gradient(90deg, var(--red), var(--teal));
+    width: 0; transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
   }
 
-  .skill-group h3 {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
+  /* ── STACK CHIPS ── */
+  .stack-chips { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .chip {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 0.6rem 1rem; transition: border-color 0.2s;
+  }
+  .chip:hover { border-color: var(--teal); }
+  .chip-icon { font-size: 1.1rem; }
+  .chip-text { }
+  .chip-name { font-size: 0.85rem; font-weight: 600; display: block; }
+  .chip-role {
+    font-family: var(--mono); font-size: 0.58rem;
+    color: var(--muted); letter-spacing: 0.06em; display: block;
   }
 
-  .skill-bar-item {
-    margin-bottom: 1rem;
-  }
-
-  .skill-bar-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.4rem;
-  }
-
-  .skill-bar-name {
-    font-size: 0.88rem;
-    font-weight: 600;
-  }
-
-  .skill-bar-pct {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
-
-  .skill-bar-track {
-    height: 3px;
-    background: var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-bar-fill {
-    position: absolute;
-    top: 0; left: 0; height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .contact-box {
+  /* ── LANGUAGE BADGE ── */
+  .lang-badge {
+    margin-top: 2rem;
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-box::before {
-    content: '';
-    position: absolute;
-    inset: -50%;
-    background: radial-gradient(circle at 50% 50%, rgba(255,59,92,0.05) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .contact-title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-  }
-
-  .contact-sub {
-    color: var(--text-dim);
-    font-size: 1rem;
-    margin-bottom: 2.5rem;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contact-links {
+    padding: 1.5rem 2rem;
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 
-  .contact-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.85rem 1.75rem;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  /* ── CONTACT ── */
+  .contact-box {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 4rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .contact-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(230,57,80,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .contact-title {
+    font-family: var(--sans); font-size: 2rem;
+    font-weight: 800; margin-bottom: 0.75rem;
+  }
+  .contact-sub {
+    color: var(--dim); font-size: 0.95rem;
+    max-width: 460px; margin: 0 auto 2.5rem;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+  .c-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
+    border: 1px solid var(--border2); color: var(--dim);
     transition: all 0.2s;
   }
+  .c-btn:hover { border-color: var(--teal); color: var(--teal); }
 
-  .contact-btn:hover {
-    border-color: var(--accent2);
-    color: var(--accent2);
-  }
-
+  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 1.75rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
   }
-
   .footer-text {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
+    font-family: var(--mono); font-size: 0.65rem; color: var(--muted);
   }
-
-  .footer-apps {
-    display: flex;
-    gap: 1rem;
+  .footer-links { display: flex; gap: 1rem; }
+  .footer-link {
+    font-family: var(--mono); font-size: 0.62rem;
+    color: var(--red); text-decoration: none;
+    border: 1px solid rgba(230,57,80,0.25); padding: 0.3rem 0.7rem;
+    transition: background 0.2s;
   }
+  .footer-link:hover { background: rgba(230,57,80,0.1); }
 
-  .footer-app-link {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    border: 1px solid rgba(255,59,92,0.3);
-    padding: 0.35rem 0.75rem;
-    transition: all 0.2s;
-  }
-
-  .footer-app-link:hover { background: rgba(255,59,92,0.1); }
-
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
   }
+  .fade { opacity:0; transform:translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade.visible { opacity:1; transform:translateY(0); }
 
-  .fade-up { animation: fadeUp 0.7s ease both; }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.35s; }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding-top: 7rem; }
-    .project-card { grid-template-columns: 1fr; }
-    .project-visual { border-right: none; border-bottom: 1px solid var(--border); }
-    .skills-grid { grid-template-columns: 1fr; }
-    nav { padding: 1rem 1.5rem; }
-    section { padding: 4rem 1.5rem; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-  }
-
-  .full-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0;
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .hero { grid-template-columns:1fr; padding-top:6rem; }
+    .hero-right { grid-template-columns: 1fr 1fr; }
+    .proj-card { grid-template-columns:1fr; }
+    .proj-sidebar { border-right:none; border-bottom:1px solid var(--border); }
+    .skills-grid { grid-template-columns:1fr; }
+    .int-points { grid-template-columns:1fr; }
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    footer { flex-direction:column; gap:1rem; text-align:center; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">// TAMIR.PPIC</div>
+  <div class="nav-id">
+    <span class="nav-name">Tamir Muhammad Yasir</span>
+    <span class="nav-role">PPIC Staff · Data Systems</span>
+  </div>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-status">
+    <span class="status-dot"></span>
+    Available for opportunities
+  </div>
 </nav>
 
+<!-- ════════════ HERO ════════════ -->
 <div class="hero">
   <div>
-    <div class="hero-tag fade-up">PPIC · Supply Chain · Data Engineering</div>
-    <h1 class="fade-up delay-1">
-      Tamir<br>
-      <span>Muhammad Yasir</span>
+    <div class="hero-eyebrow">PPIC · Supply Chain · Data Engineering</div>
+    <h1 class="hero-name">
+      TAMIR<br>
+      MUHAMMAD<br>
+      <span class="outline">YASIR</span>
     </h1>
-    <p class="hero-desc fade-up delay-2">
-      Industrial Engineering graduate with proven experience in production planning, inventory control, and operational excellence. 
-      Building integrated PPIC systems — from demand forecasting (ANN) to real-time inventory dashboard.
+    <div class="hero-title">PPIC Staff &amp; Data System Developer</div>
+    <p class="hero-desc">
+      Industrial Engineering graduate membangun sistem PPIC berbasis Machine Learning dan platform inventory terintegrasi — dari Manufacturing Orders hingga Neural Network Forecasting.
     </p>
-    <div class="hero-cta fade-up delay-3">
-      <a href="#projects" class="btn-primary">Lihat Proyek →</a>
-      <a href="#contact" class="btn-outline">Hubungi Saya</a>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-red">Lihat Proyek →</a>
+      <a href="https://www.linkedin.com/in/tamir-muhammad-yasir" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="#contact" class="btn btn-ghost">Kontak</a>
     </div>
   </div>
 
-  <div class="hero-stats">
-    <div class="stat-card">
-      <span class="stat-num">3.65</span>
-      <span class="stat-label">GPA (Teknik Industri)</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">2+</span>
-      <span class="stat-label">Tahun Pengalaman</span>
-    </div>
-    <div class="stat-card">
+  <div class="hero-right">
+    <div class="stat-card c-red">
       <span class="stat-num">9.01%</span>
-      <span class="stat-label">MAPE ANN Forecast</span>
+      <span class="stat-lbl">MAPE ANN Model</span>
     </div>
-    <div class="stat-card">
+    <div class="stat-card c-teal">
+      <span class="stat-num">86+</span>
+      <span class="stat-lbl">Forecasting Runs</span>
+    </div>
+    <div class="stat-card c-gold">
+      <span class="stat-num">3.65</span>
+      <span class="stat-lbl">GPA — Telkom Univ.</span>
+    </div>
+    <div class="stat-card c-purple">
       <span class="stat-num">2</span>
-      <span class="stat-label">Integrated Apps</span>
+      <span class="stat-lbl">Live Integrated Apps</span>
     </div>
   </div>
 </div>
 
-<hr class="full-divider">
+<hr class="hr">
 
-<section id="projects">
-  <div class="section-header">
-    <span class="section-num">01 ——</span>
-    <h2>Proyek Unggulan</h2>
-    <div class="section-line"></div>
+<!-- ════════════ PROJECTS ════════════ -->
+<div class="section-wrap" id="projects">
+  <div class="section-head fade">
+    <span class="sec-num">01 ——</span>
+    <h2>Proyek Digital</h2>
+    <div class="sec-line"></div>
   </div>
 
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-visual">
-        📈
-        <span class="project-badge badge-live">● LIVE</span>
+  <div class="projects">
+
+    <!-- PROJECT 1 -->
+    <div class="proj-card fade">
+      <div class="proj-sidebar">
+        <div>
+          <span class="proj-icon">📈</span>
+          <div class="proj-type">Machine Learning · Forecasting</div>
+          <div class="proj-sid-title">PPIC Forecasting System</div>
+          <a href="https://ppic-scm.streamlit.app/" target="_blank" class="proj-url">ppic-scm.streamlit.app ↗</a>
+        </div>
+        <div class="proj-live">
+          <span class="proj-live-dot"></span>
+          LIVE APP
+        </div>
       </div>
-      <div class="project-content">
-        <div class="project-type">Machine Learning · PPIC</div>
-        <div class="project-title">PPIC Forecasting System</div>
-        <p class="project-desc">
-          Sistem peramalan demand berbasis Artificial Neural Network (ANN) dengan arsitektur 1-8-4-1. Dibangun dengan Streamlit + PostgreSQL cloud, MAPE 9.01%. Prediksi hingga 12 bulan ke depan, real-time training, export data, dan audit log.
+      <div class="proj-body">
+        <p class="proj-desc">
+          Sistem peramalan demand berbasis <strong>Artificial Neural Network (ANN)</strong> dengan arsitektur multi-layer yang dikonfigurasi penuh. Model dilatih secara real-time langsung di browser, menghasilkan prediksi demand hingga 12 bulan ke depan. Backend menggunakan PostgreSQL cloud untuk persistensi data, user authentication, dan audit log lengkap.
         </p>
-        <div class="feature-list">
-          <span class="feature-tag">ANN / Deep Learning</span>
-          <span class="feature-tag">Real-time Training</span>
-          <span class="feature-tag">PostgreSQL Cloud</span>
-          <span class="feature-tag">Export CSV/TXT</span>
-          <span class="feature-tag">User Auth</span>
-          <span class="feature-tag">Audit Log</span>
+        <div class="tags">
+          <span class="tag">ANN / Neural Network</span>
+          <span class="tag">Python</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">User Auth</span>
+          <span class="tag">CSV Upload</span>
+          <span class="tag">Export Report</span>
         </div>
-        <div class="project-metrics">
-          <div class="metric"><span class="metric-val">9.01%</span><span class="metric-lbl">MAPE</span></div>
-          <div class="metric"><span class="metric-val">1-8-4-1</span><span class="metric-lbl">Arsitektur</span></div>
-          <div class="metric"><span class="metric-val">10K</span><span class="metric-lbl">Epochs</span></div>
+        <div class="proj-metrics">
+          <div class="pm">
+            <span class="pm-val">9.01%</span>
+            <span class="pm-lbl">MAPE</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">1-8-4-1</span>
+            <span class="pm-lbl">Architecture</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">10,000</span>
+            <span class="pm-lbl">Epochs</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">12 mo</span>
+            <span class="pm-lbl">Max Forecast</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">86+</span>
+            <span class="pm-lbl">Runs Logged</span>
+          </div>
         </div>
-        <a href="https://ppic-scm.streamlit.app/" target="_blank" class="project-link">Buka Aplikasi →</a>
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-visual">
-        📦
-        <span class="project-badge badge-live">● LIVE</span>
+    <!-- PROJECT 2 -->
+    <div class="proj-card fade">
+      <div class="proj-sidebar">
+        <div>
+          <span class="proj-icon">📦</span>
+          <div class="proj-type">Operations · Dashboard</div>
+          <div class="proj-sid-title">Inventory Control Dashboard</div>
+          <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="proj-url">inventory-ppic.streamlit.app ↗</a>
+        </div>
+        <div class="proj-live">
+          <span class="proj-live-dot"></span>
+          LIVE APP
+        </div>
       </div>
-      <div class="project-content">
-        <div class="project-type">Operations Dashboard · Inventory</div>
-        <div class="project-title">Inventory Control Dashboard</div>
-        <p class="project-desc">
-          Manajemen stok dengan EOQ & ROP otomatis, klasifikasi ABC, transaksi IN/OUT, alert stok kritis. Terintegrasi langsung dengan sistem forecasting untuk sinkronisasi annual demand.
+      <div class="proj-body">
+        <p class="proj-desc">
+          Platform manajemen inventory komprehensif dengan kalkulasi <strong>EOQ (Economic Order Quantity)</strong> dan <strong>ROP (Reorder Point)</strong> otomatis per SKU. Dashboard real-time memantau status stok, transaksi IN/OUT, klasifikasi ABC, dan memberikan peringatan stok kritis. Terintegrasi langsung dengan sistem forecasting untuk sinkronisasi demand otomatis.
         </p>
-        <div class="feature-list">
-          <span class="feature-tag">EOQ & ROP Otomatis</span>
-          <span class="feature-tag">Klasifikasi ABC</span>
-          <span class="feature-tag">Dashboard Real-time</span>
-          <span class="feature-tag">Alert Stok Kritis</span>
-          <span class="feature-tag">Sync Forecast</span>
+        <div class="tags">
+          <span class="tag">EOQ / ROP</span>
+          <span class="tag">ABC Analysis</span>
+          <span class="tag">Real-time Dashboard</span>
+          <span class="tag">Stock Transactions</span>
+          <span class="tag">Forecast Sync</span>
+          <span class="tag">Plotly Charts</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Excel Export</span>
+          <span class="tag">Alert System</span>
+          <span class="tag">Sawtooth Model</span>
         </div>
-        <div class="project-metrics">
-          <div class="metric"><span class="metric-val">10+</span><span class="metric-lbl">SKU</span></div>
-          <div class="metric"><span class="metric-val">A/B/C</span><span class="metric-lbl">Klasifikasi</span></div>
+        <div class="proj-metrics">
+          <div class="pm">
+            <span class="pm-val">10+</span>
+            <span class="pm-lbl">SKU Tracked</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">Rp51.9jt</span>
+            <span class="pm-lbl">Stock Value</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">A/B/C</span>
+            <span class="pm-lbl">Classification</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">Auto</span>
+            <span class="pm-lbl">EOQ Recalc</span>
+          </div>
+          <div class="pm">
+            <span class="pm-val">Live</span>
+            <span class="pm-lbl">Sync Forecast</span>
+          </div>
         </div>
-        <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="project-link">Buka Aplikasi →</a>
       </div>
     </div>
   </div>
-</section>
 
-<hr class="full-divider">
+  <!-- INTEGRATION -->
+  <div class="int-box fade" style="margin-top:1.5rem;">
+    <p style="color:var(--dim); font-size:0.95rem; line-height:1.85; max-width:660px;">
+      Kedua sistem dirancang untuk bekerja <strong style="color:var(--text)">terintegrasi penuh</strong>. Hasil forecasting secara otomatis disinkronisasi ke modul inventory, memperbarui annual demand dan me-recalculate EOQ & ROP tanpa input manual.
+    </p>
+    <div class="int-flow">
+      <div class="flow-node">
+        <span class="flow-node-icon">📊</span>
+        <span class="flow-node-name">Data Historis</span>
+        <span class="flow-node-sub">Input demand bulanan</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">🧠</span>
+        <span class="flow-node-name">ANN Training</span>
+        <span class="flow-node-sub">Real-time, 10K epochs</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--red);">
+        <span class="flow-node-icon">🔗</span>
+        <span class="flow-node-name">Sync Forecast</span>
+        <span class="flow-node-sub">Auto annual demand update</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">📐</span>
+        <span class="flow-node-name">EOQ / ROP</span>
+        <span class="flow-node-sub">Auto recalculate</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="flow-node-icon">✅</span>
+        <span class="flow-node-name">Keputusan</span>
+        <span class="flow-node-sub">Kapan & berapa pesan</span>
+      </div>
+    </div>
+    <div class="int-points">
+      <div class="int-pt">
+        <div class="int-pt-title">Sinkronisasi Otomatis</div>
+        <div class="int-pt-desc">Forecast terbaru langsung memperbarui annual_demand di inventory tanpa input manual apapun.</div>
+      </div>
+      <div class="int-pt">
+        <div class="int-pt-title">EOQ/ROP Auto-Recalc</div>
+        <div class="int-pt-desc">Setelah sync, seluruh parameter inventory dihitung ulang berdasarkan demand hasil ML forecasting.</div>
+      </div>
+      <div class="int-pt">
+        <div class="int-pt-title">Full Audit Trail</div>
+        <div class="int-pt-desc">Setiap sesi forecast tersimpan di PostgreSQL dengan MAPE, timestamp, parameter model untuk traceability.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<section id="skills">
-  <div class="section-header">
-    <span class="section-num">02 ——</span>
-    <h2>Kompetensi & Bahasa</h2>
-    <div class="section-line"></div>
+<hr class="hr">
+
+<!-- ════════════ SKILLS & TECH STACK ════════════ -->
+<div class="section-wrap" id="skills">
+  <div class="section-head fade">
+    <span class="sec-num">02 ——</span>
+    <h2>Keahlian</h2>
+    <div class="sec-line"></div>
   </div>
 
-  <div class="skills-grid">
-    <div class="skill-group">
-      <h3>PPIC & Supply Chain</h3>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Production Planning & PPIC</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Inventory Control (EOQ/ROP)</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Demand Forecasting (ANN)</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Operational Excellence & SOP</span><span class="skill-bar-pct">87%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:87%"></div></div></div>
+  <div class="skills-grid" id="skills-grid">
+    <div>
+      <div class="skill-group-title">PPIC & Supply Chain</div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Demand Forecasting</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Inventory Management (EOQ/ROP)</span><span class="skill-pct">88%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Production Planning & PPIC</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">ABC Analysis & MRP</span><span class="skill-pct">82%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="82"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">SOP Development</span><span class="skill-pct">88%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="88"></div></div>
+      </div>
     </div>
-    <div class="skill-group">
-      <h3>Tools & Data</h3>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Microsoft Office / Data Analysis</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Python / Streamlit</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Time Management & Data Entry</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-      <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Lean Manufacturing & Six Sigma</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+
+    <div>
+      <div class="skill-group-title">Data & Technology</div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Python (Streamlit, NumPy, Pandas)</span><span class="skill-pct">82%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="82"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Machine Learning (ANN)</span><span class="skill-pct">78%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="78"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Database (PostgreSQL)</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Dashboard Development</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Microsoft Office (Advanced)</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+      </div>
     </div>
   </div>
 
-  <div style="margin-top: 2rem; background: var(--surface); border: 1px solid var(--border); padding: 1.5rem;">
-    <h3 style="font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1rem;">🌐 Bahasa</h3>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-      <span style="background: var(--surface2); border: 1px solid var(--border); padding: 0.4rem 1rem; font-family: var(--mono); font-size: 0.75rem;">Indonesian — Native</span>
-      <span style="background: var(--surface2); border: 1px solid var(--border); padding: 0.4rem 1rem; font-family: var(--mono); font-size: 0.75rem;">English — Intermediate (TOEFL 507)</span>
+  <!-- TECH STACK CHIPS -->
+  <div style="margin-top:3rem;">
+    <div class="skill-group-title fade" style="margin-bottom:1.25rem;">Technology Stack</div>
+    <div class="stack-chips fade">
+      <div class="chip"><span class="chip-icon">🐍</span><div class="chip-text"><span class="chip-name">Python</span><span class="chip-role">Core Language</span></div></div>
+      <div class="chip"><span class="chip-icon">🎈</span><div class="chip-text"><span class="chip-name">Streamlit</span><span class="chip-role">Web Framework</span></div></div>
+      <div class="chip"><span class="chip-icon">🧠</span><div class="chip-text"><span class="chip-name">ANN Model</span><span class="chip-role">ML Forecasting</span></div></div>
+      <div class="chip"><span class="chip-icon">🐘</span><div class="chip-text"><span class="chip-name">PostgreSQL</span><span class="chip-role">Cloud Database</span></div></div>
+      <div class="chip"><span class="chip-icon">📊</span><div class="chip-text"><span class="chip-name">Plotly / Matplotlib</span><span class="chip-role">Visualization</span></div></div>
+      <div class="chip"><span class="chip-icon">🧮</span><div class="chip-text"><span class="chip-name">NumPy / Pandas</span><span class="chip-role">Data Processing</span></div></div>
+      <div class="chip"><span class="chip-icon">☁️</span><div class="chip-text"><span class="chip-name">Streamlit Cloud</span><span class="chip-role">Deployment</span></div></div>
+      <div class="chip"><span class="chip-icon">📐</span><div class="chip-text"><span class="chip-name">EOQ / ROP Model</span><span class="chip-role">Inventory Science</span></div></div>
     </div>
   </div>
-</section>
 
-<hr class="full-divider">
+  <!-- LANGUAGE BADGE -->
+  <div class="lang-badge fade">
+    <div>
+      <div style="font-family:var(--mono); font-size:0.6rem; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">Languages / Bahasa</div>
+      <div style="display:flex; gap:2rem; flex-wrap:wrap;">
+        <div><span style="font-weight:700;">🇮🇩 Bahasa Indonesia</span> <span style="font-family:var(--mono); font-size:0.68rem; color:var(--teal); margin-left:0.5rem;">Native</span></div>
+        <div><span style="font-weight:700;">🇬🇧 English</span> <span style="font-family:var(--mono); font-size:0.68rem; color:var(--teal); margin-left:0.5rem;">Intermediate · TOEFL 507</span></div>
+      </div>
+    </div>
+    <div style="margin-left:auto; text-align:right;">
+      <div style="font-family:var(--mono); font-size:0.6rem; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.4rem;">Lean / Six Sigma</div>
+      <div style="font-size:0.88rem; color:var(--dim);">Lean Manufacturing · Six Sigma Basics · Quality Control</div>
+    </div>
+  </div>
+</div>
 
-<section id="contact" style="max-width:1200px; margin:0 auto; padding:6rem 3rem;">
-  <div class="contact-box">
-    <div class="contact-title">Mari Berkolaborasi</div>
+<hr class="hr">
+
+<!-- ════════════ CONTACT ════════════ -->
+<div class="section-wrap" id="contact">
+  <div class="contact-box fade">
+    <div class="contact-title">Mari Berkolaborasi 🤝</div>
     <p class="contact-sub">
-      Tertarik mendiskusikan solusi PPIC, sistem forecasting, atau implementasi inventory management? Hubungi saya.
+      Terbuka untuk diskusi mengenai implementasi sistem PPIC berbasis data, demand forecasting, inventory management digital, atau peluang karir baru.
     </p>
     <div class="contact-links">
-      <a href="#" id="linkedin-link" target="_blank" class="contact-btn">💼 LinkedIn</a>
-      <a href="#" id="email-link" class="contact-btn">✉️ Email</a>
-      <a href="#" id="wa-link" class="contact-btn">📞 WhatsApp</a>
-      <a href="https://ppic-scm.streamlit.app/" target="_blank" class="contact-btn">📈 PPIC App</a>
-      <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="contact-btn">📦 Inventory App</a>
+      <a href="https://www.linkedin.com/in/tamir-muhammad-yasir" target="_blank" class="c-btn">💼 LinkedIn</a>
+      <a href="mailto:tamirmyasir@gmail.com" class="c-btn">✉️ tamirmyasir@gmail.com</a>
+      <a href="tel:+62823137645" class="c-btn">📞 (+62) 823137645</a>
+      <a href="https://ppic-scm.streamlit.app/" target="_blank" class="c-btn">📈 PPIC Forecasting App</a>
+      <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="c-btn">📦 Inventory App</a>
     </div>
   </div>
-</section>
+</div>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-text">© 2026 · Tamir Muhammad Yasir · PPIC & Supply Chain Data Systems</div>
-  <div class="footer-apps">
-    <a href="https://ppic-scm.streamlit.app/" target="_blank" class="footer-app-link">↗ PPIC App</a>
-    <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="footer-app-link">↗ Inventory App</a>
+  <div class="footer-text">© 2026 Tamir Muhammad Yasir · PPIC Staff & Data System Developer · Purwokerto, Indonesia</div>
+  <div class="footer-links">
+    <a href="https://ppic-scm.streamlit.app/" target="_blank" class="footer-link">↗ PPIC App</a>
+    <a href="https://inventory-ppic.streamlit.app/" target="_blank" class="footer-link">↗ Inventory App</a>
   </div>
 </footer>
 
 <script>
-  // Animate skill bars on scroll
+  // ── Scroll reveal ──
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-          bar.style.width = bar.style.width;
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.skill-fill[data-w]').forEach(bar => {
+          setTimeout(() => bar.style.width = bar.dataset.w + '%', 100);
         });
       }
     });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.skills-grid').forEach(el => observer.observe(el));
+  }, { threshold: 0.12 });
 
-  // Nav active
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 200) current = s.id;
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+  // Skill bars animation when skills-grid enters view
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.skill-fill[data-w]').forEach(bar => {
+          setTimeout(() => bar.style.width = bar.dataset.w + '%', 150);
+        });
+        skillObs.disconnect();
+      }
     });
+  }, { threshold: 0.2 });
+  const sg = document.getElementById('skills-grid');
+  if (sg) skillObs.observe(sg);
+
+  // Nav active highlight
+  const sections = document.querySelectorAll('[id]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 180) cur = s.id; });
     document.querySelectorAll('.nav-links a').forEach(a => {
-      a.style.color = a.getAttribute('href') === '#'+current ? 'var(--accent2)' : '';
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--teal)' : '';
     });
   });
-
-  // ========== GANTI DATA KONTAK DI SINI ==========
-  const linkedinUrl = "https://www.linkedin.com/in/tamir-muhammad-yasir-ba8386342/";  // ganti link asli Anda
-  const emailAddress = "tamirmyasir@email.com";                           // ganti email asli
-  const whatsappNumber = "6281234567890";                                 // ganti nomor WA (tanpa +62, cukup angka)
-  const whatsappText = "Halo Tamir, saya tertarik dengan portofolio PPIC Anda";
-  // ==============================================
-
-  const linkedinElem = document.getElementById("linkedin-link");
-  const emailElem = document.getElementById("email-link");
-  const waElem = document.getElementById("wa-link");
-
-  if (linkedinElem && linkedinUrl !== "#") {
-    linkedinElem.href = linkedinUrl;
-    linkedinElem.innerHTML = `💼 LinkedIn`;
-  }
-  if (emailElem && emailAddress !== "tamir.yasir@email.com") {
-    emailElem.href = `mailto:${emailAddress}`;
-    emailElem.innerHTML = `✉️ ${emailAddress}`;
-  }
-  if (waElem && whatsappNumber !== "6281234567890") {
-    let waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
-    waElem.href = waLink;
-    let displayNumber = whatsappNumber.replace(/^62/, "0");
-    waElem.innerHTML = `📞 ${displayNumber}`;
-  }
 </script>
-
 </body>
 </html>
